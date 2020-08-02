@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartListService } from './cart-list/cart-list.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'shop';
+export class AppComponent implements OnInit {
+    title = 'shop';
+    showBoughtProducts: boolean;
+
+    constructor(private cartListService: CartListService) { }
+
+    ngOnInit(): void {
+        this.showBoughtProducts = this.cartListService.getBoughtProducts().length !== 0;
+    }
 }
