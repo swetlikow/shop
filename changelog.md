@@ -6,3 +6,6 @@ Task 1:
 - add CartListComponent
 - add CartService
 - implement ngFor, ngIf
+
+Task 2:
+-
