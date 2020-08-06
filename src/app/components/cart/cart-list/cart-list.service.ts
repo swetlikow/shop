@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from '../../products/product/product';
+import { Product } from '../../products/product/product';
 
 @Injectable({
     providedIn: 'root'
@@ -8,8 +8,8 @@ export class CartListService {
 
     constructor() { }
 
-    getBoughtProducts(): IProduct[] {
-        const products: IProduct[] = [
+    getBoughtProducts(): Product[] {
+        const products: Product[] = [
             {
                 id: 1,
                 name: 'Milk'
@@ -21,5 +21,9 @@ export class CartListService {
         ];
 
         return products;
+    }
+
+    showBoughtProducts(): boolean {
+        return this.getBoughtProducts().length !== 0;
     }
 }

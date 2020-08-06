@@ -1,3 +1,8 @@
-<ul class="list-group">Bought Products
-    <li class="list-group-item" *ngFor="let product of boughtProducts;">{{product.name}}</li>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">Bought Products</div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let product of boughtProducts;">{{product.name}}</li>
+        </ul>
+    </div>
+</div>

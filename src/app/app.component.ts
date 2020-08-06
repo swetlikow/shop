@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
     constructor(private cartListService: CartListService) { }
 
     ngOnInit(): void {
-        // эту маленькую бизнес логику спрятать в самом сервисе и предоставить свойство сервиса для чтения
-        this.showBoughtProducts = this.cartListService.getBoughtProducts().length !== 0;
+        this.showBoughtProducts = this.cartListService.showBoughtProducts();
     }
 }
