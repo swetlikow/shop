@@ -12,6 +12,9 @@ export class CartListService {
     addBoughtProduct(product: Product) {
         this.boughtProducts.push(product);
         console.log(this.boughtProducts);
+    }
 
+    getBoughtProduct() {
+        return this.boughtProducts;
     }
 }

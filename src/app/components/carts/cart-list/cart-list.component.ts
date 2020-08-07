@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from '../../products/product/product';
 
 @Component({
@@ -10,14 +10,6 @@ export class CartListComponent {
 
     boughtProducts: Product[];
 
-    @Output()
-    removeProduct: EventEmitter<Product> = new EventEmitter();
-
     constructor() { }
-
-    onRemoveProduct(product: Product): void {
-        // remove product
-        this.removeProduct.emit(product);
-    }
 
 }
