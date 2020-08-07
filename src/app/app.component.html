@@ -1,7 +1,7 @@
 <br>
 <div class="row">
     <div class="col-sm-12 text-center">
-        <app-product-list (buyProduct)="onBuyProduct($event)"></app-product-list>
+        <app-product-list [products]="products" (buyProduct)="onBuyProduct($event)"></app-product-list>
         <app-cart-list *ngIf="showBoughtProducts" [boughtProducts]="boughtProducts"
             (removeProduct)="onRemoveProduct($event)"></app-cart-list>
     </div>

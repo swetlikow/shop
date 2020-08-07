@@ -1,24 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../product/product';
-import { ProductsService } from '../products.service';
 
 @Component({
     selector: 'app-product-list',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
 
-    products: Product[];
+    @Input() products: Product[];
 
     @Output()
     buyProduct: EventEmitter<Product> = new EventEmitter();
 
-    constructor(private productsService: ProductsService) { }
-
-    ngOnInit(): void {
-        this.products = this.productsService.getProducts();
-    }
+    constructor() { }
 
     onBuyProduct(product: Product): void {
         product.count = product.count - 1;
