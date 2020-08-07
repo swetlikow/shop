@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../products/product/product';
 
 @Component({
@@ -9,9 +9,12 @@ import { Product } from '../../products/product/product';
 export class CartComponent {
 
     @Input() product: Product;
+    @Output() removeProduct: EventEmitter<Product> = new EventEmitter();
 
     constructor() { }
 
-    onRemoveProduct(): void { }
+    onRemoveProduct(): void {
+        this.removeProduct.emit(this.product);
+    }
 
 }

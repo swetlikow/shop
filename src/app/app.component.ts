@@ -19,4 +19,13 @@ export class AppComponent {
         this.cartListService.addBoughtProduct(product);
         this.boughtProducts = this.cartListService.getBoughtProduct();
     }
+
+    onRemoveProduct(product: Product): void {
+        this.cartListService.removeBoughtProduct(product);
+        this.boughtProducts = this.cartListService.getBoughtProduct();
+
+        if (this.boughtProducts.length === 0) {
+            this.showBoughtProducts = false;
+        }
+    }
 }

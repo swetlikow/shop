@@ -17,7 +17,6 @@ export class ProductComponent {
     constructor() { }
 
     onBuyProduct(): void {
-
         if (!this.product.bought) {
             this.buyProduct.emit(this.product);
             this.noProduct = this.product.bought;
