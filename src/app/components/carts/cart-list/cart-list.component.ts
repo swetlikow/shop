@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../../products/product/product';
 
 @Component({
@@ -8,7 +8,7 @@ import { Product } from '../../products/product/product';
 })
 export class CartListComponent {
 
-    boughtProducts: Product[];
+    @Input() boughtProducts: Product[];
 
     constructor() { }
 

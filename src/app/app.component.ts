@@ -10,12 +10,13 @@ import { Product } from './components/products/product/product';
 export class AppComponent {
     title = 'shop';
     showBoughtProducts: boolean;
+    boughtProducts: Product[] = [];
 
     constructor(private cartListService: CartListService) { }
 
     onBuyProduct(product: Product): void {
         this.showBoughtProducts = true;
         this.cartListService.addBoughtProduct(product);
-
+        this.boughtProducts = this.cartListService.getBoughtProduct();
     }
 }
