@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Basket</div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <app-cart *ngFor="let product of boughtProducts" [product]="product"
+                (removeProduct)="onRemoveProduct($event)">
+            </app-cart>
+        </ul>
+    </div>
+</div>
