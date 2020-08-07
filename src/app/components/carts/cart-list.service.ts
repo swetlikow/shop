@@ -9,12 +9,12 @@ export class CartListService {
     boughtProducts: Product[] = [];
     constructor() { }
 
-    addBoughtProduct(product: Product) {
+    addBoughtProduct(product: Product): void {
         this.boughtProducts.push(product);
         console.log(this.boughtProducts);
     }
 
-    getBoughtProduct() {
+    getBoughtProduct(): Product[] {
         return this.boughtProducts;
     }
 }

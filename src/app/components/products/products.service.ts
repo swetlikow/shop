@@ -10,9 +10,9 @@ export class ProductsService {
 
     getProducts(): Product[] {
         return [
-            new Product(1, 'Milk'),
-            new Product(2, 'Potato'),
-            new Product(3, 'Banana'),
+            new Product(1, 'Milk', 2),
+            new Product(2, 'Potato', 3),
+            new Product(3, 'Banana', 1),
         ];
     }
 }

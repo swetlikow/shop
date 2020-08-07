@@ -21,7 +21,10 @@ export class ProductListComponent implements OnInit {
     }
 
     onBuyProduct(product: Product): void {
-        product.bought = true;
+        product.count = product.count - 1;
+        if (product.count === 0) {
+            product.bought = true;
+        }
         this.buyProduct.emit(product);
     }
 

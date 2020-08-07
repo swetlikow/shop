@@ -9,6 +9,7 @@ import { Product } from './product';
 export class ProductComponent {
 
     @Input() product: Product;
+    noProduct: boolean;
 
     @Output()
     buyProduct: EventEmitter<Product> = new EventEmitter();
@@ -16,7 +17,11 @@ export class ProductComponent {
     constructor() { }
 
     onBuyProduct(): void {
-        this.buyProduct.emit(this.product);
+
+        if (!this.product.bought) {
+            this.buyProduct.emit(this.product);
+            this.noProduct = this.product.bought;
+        }
     }
 
 }
