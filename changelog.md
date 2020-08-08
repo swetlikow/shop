@@ -8,4 +8,10 @@ Task 1:
 - implement ngFor, ngIf
 
 Task 2:
--
+- divide to modules
+- add product <-> product-list communication (@Input(), @Output())
+- add cart <-> cart-list communication (@Input(), @Output())
+- add logic buy/remove product to/from basket
+- add #appTitle using @ViewChild
+- add HighlightDirective directive
+

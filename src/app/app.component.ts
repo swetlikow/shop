@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartListService } from './components/carts/cart-list.service';
 import { Product } from './components/products/product/product';
 import { ProductsService } from './components/products/products.service';
@@ -8,8 +8,8 @@ import { ProductsService } from './components/products/products.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    title = 'shop';
+export class AppComponent implements OnInit, AfterViewInit {
+    @ViewChild('appTitle') appTitle: ElementRef<HTMLHeadingElement>;
     showBoughtProducts: boolean;
     boughtProducts: Product[] = [];
     products: Product[] = [];
@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.products = this.productsService.getProducts();
+    }
+
+    ngAfterViewInit(): void {
+        this.appTitle.nativeElement.innerText = 'SHOP';
     }
 
     onBuyProduct(product: Product): void {

@@ -19,7 +19,7 @@ export class ProductsService {
         return this.products;
     }
 
-    removeProducts(product: Product) {
+    removeProducts(product: Product): void {
         const prod = this.products.find(x => x.id === product.id);
         prod.count = prod.count + 1;
         prod.bought = false;
