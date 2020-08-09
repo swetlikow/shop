@@ -3,7 +3,7 @@
     <div class="panel-body">
         <ul class="list-group">
             <app-cart *ngFor="let product of boughtProducts" [product]="product"
-                (removeProduct)="onRemoveProduct($event)"></app-cart>
+                (removeProduct)="onRemoveProduct($event)" appHighlight></app-cart>
         </ul>
     </div>
 </div>
