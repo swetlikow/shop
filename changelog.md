@@ -16,5 +16,6 @@ Task 2:
 - add HighlightDirective directive
 
 Task 3:
+- add sum and quantity
 -
 
