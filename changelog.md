@@ -15,3 +15,6 @@ Task 2:
 - add #appTitle using @ViewChild
 - add HighlightDirective directive
 
+Task 3:
+-
+
