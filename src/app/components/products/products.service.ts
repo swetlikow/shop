@@ -9,9 +9,9 @@ export class ProductsService {
 
     constructor() {
         this.products = [
-            new Product(1, 'Milk', 2),
-            new Product(2, 'Potato', 3),
-            new Product(3, 'Banana', 1),
+            new Product(1, 'Milk', 2, 5),
+            new Product(2, 'Potato', 3, 3),
+            new Product(3, 'Banana', 1, 2),
         ];
     }
 

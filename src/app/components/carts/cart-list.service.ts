@@ -6,6 +6,9 @@ import { Product } from '../products/product/product';
 })
 export class CartListService {
     boughtProducts: Product[] = [];
+    totalProductsQuantity: number;
+    totalProductsSum: number;
+
     constructor() { }
 
     addBoughtProduct(product: Product): void {
@@ -14,9 +17,10 @@ export class CartListService {
             prod.count = prod.count + 1;
         }
         else {
-            const boughtProduct = new Product(product.id, product.name, 1, product.bought);
+            const boughtProduct = new Product(product.id, product.name, 1, product.price, product.bought);
             this.boughtProducts.push(boughtProduct);
         }
+        this.updateBoughtProductSumAndCount();
     }
 
     getBoughtProduct(): Product[] {
@@ -32,5 +36,22 @@ export class CartListService {
             const index = this.boughtProducts.findIndex(x => x.id === product.id);
             this.boughtProducts.splice(index, 1);
         }
+        this.updateBoughtProductSumAndCount();
+    }
+
+    updateBoughtProductSumAndCount(): void {
+        this.totalProductsQuantity = 0;
+        this.boughtProducts.forEach(x => this.totalProductsQuantity += x.count);
+
+        this.totalProductsSum = 0;
+        this.boughtProducts.forEach(x => this.totalProductsSum += (x.price * x.count));
+    }
+
+    getBoughtProductsQuantity(): number {
+        return this.totalProductsQuantity;
+    }
+
+    getBoughtProductsSum(): number {
+        return this.totalProductsSum;
     }
 }

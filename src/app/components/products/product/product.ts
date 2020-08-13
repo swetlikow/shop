@@ -4,6 +4,7 @@ export class Product {
         public id: number = null,
         public name: string,
         public count: number,
+        public price: number,
         public bought: boolean = false
     ) { }
 }

@@ -9,6 +9,8 @@ import { Product } from '../../products/product/product';
 export class CartListComponent {
 
     @Input() boughtProducts: Product[];
+    @Input() boughtProductsQuantity: number;
+    @Input() boughtProductsSum: number;
     @Output() removeProduct: EventEmitter<Product> = new EventEmitter();
 
     constructor() { }

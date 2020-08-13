@@ -13,6 +13,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     showBoughtProducts: boolean;
     boughtProducts: Product[] = [];
     products: Product[] = [];
+    boughtProductsQuantity: number;
+    boughtProductsSum: number;
 
     constructor(private cartListService: CartListService, private productsService: ProductsService) { }
 
@@ -28,11 +30,15 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.showBoughtProducts = true;
         this.cartListService.addBoughtProduct(product);
         this.boughtProducts = this.cartListService.getBoughtProduct();
+        this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
+        this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
     }
 
     onRemoveProduct(product: Product): void {
         this.cartListService.removeBoughtProduct(product);
         this.boughtProducts = this.cartListService.getBoughtProduct();
+        this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
+        this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
 
         this.productsService.removeProducts(product);
         this.products = this.productsService.getProducts();

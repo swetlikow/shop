@@ -1,5 +1,5 @@
 <div class="col-sm-10 text-center">
-    <li class="list-group-item">Product: {{product.name}} Count: {{product.count}}</li>
+    <li class="list-group-item">Product: {{product.name}} Count: {{product.count}} Price per one: {{product.price}}</li>
 </div>
 <div class="col-sm-2 text-center">
     <div class="btn btn-sm btn-success btn-align-middle" (click)="onBuyProduct()" *ngIf="!product.bought">Buy</div>
