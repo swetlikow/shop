@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { AppInfo } from '../models/appInfo';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ConstantsService {
-
-  constructor() { }
+    getTaskInfo(): AppInfo {
+        return new AppInfo('Shop', '1.0', 'http://localhost:4200');
+    }
 }
+
+export const constantsInstance = new ConstantsService();
+
+

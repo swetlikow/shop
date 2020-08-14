@@ -17,5 +17,8 @@ Task 2:
 
 Task 3:
 - add sum and quantity
--
+- add LocalStorageService
+- add ConfigOptionsService
+- implement DI with useClass option
+- add ConstantsService and implement useValue in AboutComponent
 
