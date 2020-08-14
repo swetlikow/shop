@@ -5,14 +5,17 @@ import { IUserService } from './iuser-service';
 @Injectable({
     providedIn: 'root'
 })
-export class ConfigOptionsService implements IUserService {
+export class LocalStorageService implements IUserService {
+
+    currentUserKey = 'userKey';
 
     constructor() { }
 
     setCurrentUser(user: User): void {
-        throw new Error('Method not implemented.');
+        window.localStorage.setItem(this.currentUserKey, JSON.stringify(user));
     }
+
     getCurrentUser(): User {
-        throw new Error('Method not implemented.');
+        return JSON.parse(window.localStorage.getItem(this.currentUserKey));
     }
 }
