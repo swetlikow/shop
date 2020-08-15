@@ -19,6 +19,7 @@ import { LocalStorageService } from '../shared/services/local-storage.service';
 export class AboutComponent implements OnInit {
     about: AppInfo;
     currentUser: User;
+    token: string;
 
     constructor(
         private constInstance: ConstantsService,
@@ -29,8 +30,6 @@ export class AboutComponent implements OnInit {
         this.configOptionsService.setCurrentUser(new User(1, 'svietlikov', 'andrii_svietliko@epam.com'));
         this.currentUser = this.configOptionsService.getCurrentUser();
         this.about = this.constInstance.getTaskInfo();
-        console.log(this.generateToken);
-
+        this.token = this.generateToken;
     }
-
 }

@@ -21,4 +21,6 @@ Task 3:
 - add ConfigOptionsService
 - implement DI with useClass option
 - add ConstantsService and implement useValue in AboutComponent
+- add generate service + factory
+- add appDivFontSize directive
 
