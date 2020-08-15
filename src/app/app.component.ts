@@ -2,15 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { CartListService } from './components/carts/cart-list.service';
 import { Product } from './components/products/product/product';
 import { ProductsService } from './components/products/products.service';
-import { User } from './components/shared/models/user';
-import { ConfigOptionsService } from './components/shared/services/config-options.service';
-import { LocalStorageService } from './components/shared/services/local-storage.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    providers: [{ provide: ConfigOptionsService, useClass: LocalStorageService }]
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
     @ViewChild('appTitle') appTitle: ElementRef<HTMLHeadingElement>;
@@ -19,18 +15,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     products: Product[] = [];
     boughtProductsQuantity: number;
     boughtProductsSum: number;
-    currentUser: User;
 
     constructor(
         private cartListService: CartListService,
-        private productsService: ProductsService,
-        private configOptionsService: ConfigOptionsService) { }
+        private productsService: ProductsService) { }
 
     ngOnInit(): void {
         this.products = this.productsService.getProducts();
-        this.configOptionsService.setCurrentUser(new User(1, 'svietlikov', 'andrii_svietliko@epam.com'));
-
-        this.currentUser = this.configOptionsService.getCurrentUser();
     }
 
     ngAfterViewInit(): void {
