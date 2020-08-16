@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { CartModule } from './components/carts/cart.module';
-import { OrderModule } from './components/orders/order.module';
 import { ProductModule } from './components/products/product.module';
 import { SharedModule } from './components/shared/shared.module';
 
@@ -18,7 +17,6 @@ import { SharedModule } from './components/shared/shared.module';
         AppRoutingModule,
 
         ProductModule,
-        OrderModule,
         CartModule,
         SharedModule
     ],

@@ -11,11 +11,18 @@ export class CartListComponent {
     @Input() boughtProducts: Product[];
     @Input() boughtProductsQuantity: number;
     @Input() boughtProductsSum: number;
+    order = true;
     @Output() removeProduct: EventEmitter<Product> = new EventEmitter();
+    @Output() toggleProductsOrder: EventEmitter<boolean> = new EventEmitter();
 
     constructor() { }
 
     onRemoveProduct(product: Product): void {
         this.removeProduct.emit(product);
+    }
+
+    onToggleProductsOrder(): void {
+        this.order = !this.order;
+        this.toggleProductsOrder.emit(this.order);
     }
 }

@@ -15,6 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     products: Product[] = [];
     boughtProductsQuantity: number;
     boughtProductsSum: number;
+    order: boolean;
 
     constructor(
         private cartListService: CartListService,
@@ -54,5 +55,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (this.boughtProducts.length === 0) {
             this.showBoughtProducts = false;
         }
+    }
+
+    onToggleProductsOrder(value: boolean): void {
+        this.order = value;
     }
 }
