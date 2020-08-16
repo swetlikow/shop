@@ -21,12 +21,17 @@ export class AppComponent implements OnInit, AfterViewInit {
         private productsService: ProductsService) { }
 
     ngOnInit(): void {
-        this.products = this.productsService.getProducts();
+        this.productsService.getProductsFromDb()
+            .then((products) => {
+                this.products = products;
+            })
+            .catch((error) => {
+                throw error;
+            });
     }
 
     ngAfterViewInit(): void {
         this.appTitle.nativeElement.innerText = 'SHOP';
-
     }
 
     onBuyProduct(product: Product): void {

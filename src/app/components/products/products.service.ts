@@ -5,14 +5,28 @@ import { Product } from './product/product';
     providedIn: 'root'
 })
 export class ProductsService {
-    products: Product[] = [];
+    products: Product[];
 
-    constructor() {
-        this.products = [
-            new Product(1, 'Milk', 2, 5),
-            new Product(2, 'Potato', 3, 3),
-            new Product(3, 'Banana', 1, 2),
-        ];
+    constructor() { }
+
+    getProductsFromDb(): Promise<Product[]> {
+        return new Promise<Product[]>((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    const products = [
+                        new Product(1, 'Milk', 2, 5),
+                        new Product(2, 'Potato', 3, 3),
+                        new Product(3, 'Banana', 1, 2),
+                    ];
+
+                    this.products = products;
+                    resolve(products);
+
+                } catch (error) {
+                    reject(error);
+                }
+            }, 5000);
+        });
     }
 
     getProducts(): Product[] {
