@@ -7,8 +7,8 @@ import { Product } from '../../products/product/product';
 export class OrderProductsPipe implements PipeTransform {
 
     transform(value: Product[], order: boolean): Product[] {
-        let sortAsc = (p1: Product, p2: Product) => { return p1.count - p2.count; }
-        let sortDesc = (p1: Product, p2: Product) => { return p2.count - p1.count; }
+        const sortAsc = (p1: Product, p2: Product) => p1.count - p2.count;
+        const sortDesc = (p1: Product, p2: Product) => p2.count - p1.count;
 
         if (order === true) {
             return value.sort(sortAsc);

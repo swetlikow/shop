@@ -25,5 +25,9 @@ Task 3:
 - add appDivFontSize directive
 
 Task 4:
--
+- add built-in Pipe
+- change getProducts to Promise
+- add OrderByPipe for basket
+- use OrderByPipe
+
 
