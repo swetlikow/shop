@@ -1,6 +1,6 @@
 <div appDivFontSize="16" class="row">
     <div class="col-sm-6">
-        {{currentUser.email}} ({{token}})
+        {{currentUser.email}} ({{token | uppercase}})
     </div>
     <div class="col-sm-6">
         App: {{about.app}} Version: {{about.version}} URL: {{about.url}}
