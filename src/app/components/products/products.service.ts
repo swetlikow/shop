@@ -25,7 +25,7 @@ export class ProductsService {
                 } catch (error) {
                     reject(error);
                 }
-            }, 5000);
+            }, 2000);
         });
     }
 

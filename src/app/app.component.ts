@@ -1,63 +1,25 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CartListService } from './components/carts/cart-list.service';
-import { Product } from './components/products/product/product';
-import { ProductsService } from './components/products/products.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-    @ViewChild('appTitle') appTitle: ElementRef<HTMLHeadingElement>;
-    showBoughtProducts: boolean;
-    boughtProducts: Product[] = [];
-    products: Product[] = [];
-    boughtProductsQuantity: number;
-    boughtProductsSum: number;
-    order: boolean;
+export class AppComponent {
+    constructor(private router: Router) { }
 
-    constructor(
-        private cartListService: CartListService,
-        private productsService: ProductsService) { }
-
-    ngOnInit(): void {
-        this.productsService.getProductsFromDb()
-            .then((products) => {
-                this.products = products;
-            })
-            .catch((error) => {
-                throw error;
-            });
+    onHome(): void {
+        console.log(this.router.config);
+        this.router.navigate(['home']);
     }
 
-    ngAfterViewInit(): void {
-        this.appTitle.nativeElement.innerText = 'SHOP';
+    onAbout(): void {
+        this.router.navigate(['about']);
     }
 
-    onBuyProduct(product: Product): void {
-        this.showBoughtProducts = true;
-        this.cartListService.addBoughtProduct(product);
-        this.boughtProducts = this.cartListService.getBoughtProduct();
-        this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
-        this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
-    }
-
-    onRemoveProduct(product: Product): void {
-        this.cartListService.removeBoughtProduct(product);
-        this.boughtProducts = this.cartListService.getBoughtProduct();
-        this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
-        this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
-
-        this.productsService.removeProducts(product);
-        this.products = this.productsService.getProducts();
-
-        if (this.boughtProducts.length === 0) {
-            this.showBoughtProducts = false;
-        }
-    }
-
-    onToggleProductsOrder(value: boolean): void {
-        this.order = value;
+    onProducts(): void {
+        this.router.navigate(['products']);
     }
 }

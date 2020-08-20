@@ -1,10 +1,11 @@
-<app-about class="text-center"></app-about>
-<h1 #appTitle class="text-center"></h1>
-<div class="row">
-    <div class="col-sm-12 text-center">
-        <app-product-list [products]="products" (buyProduct)="onBuyProduct($event)"></app-product-list>
-        <app-cart-list *ngIf="showBoughtProducts" [boughtProducts]="boughtProducts | orderProducts:order"
-            (toggleProductsOrder)="onToggleProductsOrder($event)" [boughtProductsQuantity]="boughtProductsQuantity"
-            [boughtProductsSum]="boughtProductsSum" (removeProduct)="onRemoveProduct($event)"></app-cart-list>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand btn" (click)="onHome()">Home</div>
+            <div class="navbar-brand btn" (click)="onAbout()">About</div>
+            <div class="navbar-brand btn" (click)="onProducts()">Products</div>
+        </div>
     </div>
-</div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -30,4 +30,10 @@ Task 4:
 - add OrderByPipe for basket
 - use OrderByPipe
 
+Task 5:
+- add routing rotes
+- add HomeComponent
+- add NavBar with links to Home, About and Products routes
+- add navigation by routes
+
 
