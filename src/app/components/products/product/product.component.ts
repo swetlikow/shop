@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from './product';
 
 @Component({
@@ -13,11 +14,15 @@ export class ProductComponent {
     @Output()
     buyProduct: EventEmitter<Product> = new EventEmitter();
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     onBuyProduct(): void {
         if (!this.product.bought) {
             this.buyProduct.emit(this.product);
         }
+    }
+
+    onProductDetails(): void {
+        this.router.navigate(['product/details', this.product.id.toString()]);
     }
 }

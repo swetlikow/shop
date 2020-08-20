@@ -11,7 +11,6 @@ export class AppComponent {
     constructor(private router: Router) { }
 
     onHome(): void {
-        console.log(this.router.config);
         this.router.navigate(['home']);
     }
 
