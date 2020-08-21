@@ -1,9 +1,9 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div class="navbar-brand btn" (click)="onHome()">Home</div>
-            <div class="navbar-brand btn" (click)="onAbout()">About</div>
-            <div class="navbar-brand btn" (click)="onProducts()">Products</div>
+            <div [routerLink]="[ '/home']" class="navbar-brand btn">Home</div>
+            <div [routerLink]="[ '/about']" class="navbar-brand btn">About</div>
+            <div [routerLink]="[ '/products']" class="navbar-brand btn">Products</div>
         </div>
     </div>
 </nav>

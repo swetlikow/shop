@@ -11,21 +11,19 @@ export class ProductsService {
 
     getProductsFromDb(): Promise<Product[]> {
         return new Promise<Product[]>((resolve, reject) => {
-            setTimeout(() => {
-                try {
-                    const products = [
-                        new Product(1, 'Milk', 2, 5),
-                        new Product(2, 'Potato', 3, 3),
-                        new Product(3, 'Banana', 1, 2),
-                    ];
+            try {
+                const products = [
+                    new Product(1, 'Milk', 2, 5),
+                    new Product(2, 'Potato', 3, 3),
+                    new Product(3, 'Banana', 1, 2),
+                ];
 
-                    this.products = products;
-                    resolve(products);
+                this.products = products;
+                resolve(products);
 
-                } catch (error) {
-                    reject(error);
-                }
-            }, 2000);
+            } catch (error) {
+                reject(error);
+            }
         });
     }
 

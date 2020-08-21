@@ -21,6 +21,6 @@ export class ProductComponent {
     }
 
     onProductDetails(): void {
-        this.router.navigate(['products', 'details', this.product.id], { state: this.product });
+        this.router.navigate(['products', 'product-details', this.product.id], { state: this.product });
     }
 }

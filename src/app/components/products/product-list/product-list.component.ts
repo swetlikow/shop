@@ -9,9 +9,7 @@ import { Product } from '../product/product';
 export class ProductListComponent {
 
     @Input() products: Product[];
-
-    @Output()
-    buyProduct: EventEmitter<Product> = new EventEmitter();
+    @Output() buyProduct: EventEmitter<Product> = new EventEmitter();
 
     constructor() { }
 
