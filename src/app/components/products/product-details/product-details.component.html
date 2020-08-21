@@ -1,1 +1,10 @@
-<p>product-details works!</p>
+<div class="row" *ngIf="product">
+    <div class="col-sm-10 text-center">
+        <li class="list-group-item">Product Name: {{product.name}}</li>
+        <li class="list-group-item">Count in stock: {{product.count}}</li>
+        <li class="list-group-item">Price per one: {{product.price}}</li>
+    </div>
+    <div class="col-sm-2 text-center">
+        <div class="btn btn-sm btn-info btn-align-middle" (click)="onGoBack()">Go Back to Products</div>
+    </div>
+</div>

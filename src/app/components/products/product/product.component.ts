@@ -10,9 +10,7 @@ import { Product } from './product';
 export class ProductComponent {
 
     @Input() product: Product;
-
-    @Output()
-    buyProduct: EventEmitter<Product> = new EventEmitter();
+    @Output() buyProduct: EventEmitter<Product> = new EventEmitter();
 
     constructor(private router: Router) { }
 
@@ -23,6 +21,6 @@ export class ProductComponent {
     }
 
     onProductDetails(): void {
-        this.router.navigate(['product/details', this.product.id.toString()]);
+        this.router.navigate(['products', 'details', this.product.id], { state: this.product });
     }
 }
