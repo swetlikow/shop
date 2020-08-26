@@ -5,11 +5,11 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { OrderProductsPipe } from './pipes/order-products.pipe';
 
 
-const declar = [HighlightDirective, DivFontSizeDirective, OrderProductsPipe];
+const shared = [HighlightDirective, DivFontSizeDirective, OrderProductsPipe];
 
 @NgModule({
-  declarations: [...declar],
-  imports: [CommonModule],
-  exports: [...declar]
+    declarations: [...shared],
+    imports: [CommonModule],
+    exports: [...shared]
 })
 export class SharedModule { }
