@@ -38,6 +38,6 @@ Task 5:
 - add AdminModule (AdminComponent, AdminDashboardComponent)
 - add AuthGuard (CanLoad, CanActivate, CanActivateChild)
 - add AuthService
-- add LoginComponent
+- add Login/Logout
 
 
