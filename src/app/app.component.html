@@ -5,6 +5,15 @@
             <div [routerLink]="[ '/products']" class="navbar-brand btn">Products</div>
             <div [routerLink]="[ '/about']" class="navbar-brand btn">About</div>
             <div [routerLink]="[ '/admin']" class="navbar-brand btn">Admin</div>
+
+            <div style="float: right;">
+                <button class="btn btn-info" (click)="onLogout()"
+                    *ngIf="authService.isLoggedIn; else loginBtn">Logout</button>
+
+                <ng-template #loginBtn>
+                    <button class="btn btn-info" (click)="onLogin()">Login</button>
+                </ng-template>
+            </div>
         </div>
     </div>
 </nav>

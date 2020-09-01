@@ -35,5 +35,9 @@ Task 5:
 - add HomeComponent
 - add NavBar with links to Home, About and Products routes
 - add navigation by routes
+- add AdminModule (AdminComponent, AdminDashboardComponent)
+- add AuthGuard (CanLoad, CanActivate, CanActivateChild)
+- add AuthService
+- add LoginComponent
 
 
