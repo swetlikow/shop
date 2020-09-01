@@ -18,6 +18,10 @@ const routes: Routes = [
         component: ProductsComponent
     },
     {
+        path: 'admin',
+        loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule),
+    },
+    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'

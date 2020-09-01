@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -18,8 +19,15 @@ import { SharedModule } from './components/shared/shared.module';
         CartModule,
         ProductModule,
         SharedModule,
+
         AppRoutingModule
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(router: Router) {
+        const replacer = (key: string, value: any): string =>
+            typeof value === 'function' ? value.name : value;
+        // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+    }
+}
