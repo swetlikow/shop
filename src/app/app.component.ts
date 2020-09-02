@@ -12,11 +12,11 @@ export class AppComponent {
 
     constructor(public authService: AuthService, private router: Router) { }
 
-    onLogin() {
+    onLogin(): void {
         this.authService.login();
     }
 
-    onLogout() {
+    onLogout(): void {
         this.authService.logout();
         this.router.navigate(['home']);
     }
