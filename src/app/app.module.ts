@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -7,7 +8,6 @@ import { AboutComponent } from './components/about/about.component';
 import { CartModule } from './components/carts/cart.module';
 import { ProductModule } from './components/products/product.module';
 import { SharedModule } from './components/shared/shared.module';
-
 
 @NgModule({
     declarations: [
@@ -19,6 +19,7 @@ import { SharedModule } from './components/shared/shared.module';
         CartModule,
         ProductModule,
         SharedModule,
+        HttpClientModule,
 
         AppRoutingModule
     ],

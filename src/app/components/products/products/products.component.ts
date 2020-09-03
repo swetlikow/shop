@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit {
 
     showBoughtProducts: boolean;
     boughtProducts: Product[] = [];
-    products: Product[] = [];
+    products: Product[];
     boughtProductsQuantity: number;
     boughtProductsSum: number;
     order: boolean;
@@ -22,13 +22,8 @@ export class ProductsComponent implements OnInit {
         private productsService: ProductsService) { }
 
     ngOnInit(): void {
-        this.productsService.getProductsFromDb()
-            .then((products) => {
-                this.products = products;
-            })
-            .catch((error) => {
-                throw error;
-            });
+        this.productsService.getProducts()
+            .then((response) => this.products = response);
     }
 
     onBuyProduct(product: Product): void {
@@ -37,6 +32,10 @@ export class ProductsComponent implements OnInit {
         this.boughtProducts = this.cartListService.getBoughtProduct();
         this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
         this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
+
+        this.productsService.addProduct(product);
+        this.productsService.getProducts()
+            .then((response) => this.products = response);
     }
 
     onRemoveProduct(product: Product): void {
@@ -45,8 +44,9 @@ export class ProductsComponent implements OnInit {
         this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
         this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
 
-        this.productsService.removeProducts(product);
-        this.products = this.productsService.getProducts();
+        this.productsService.removeProduct(product);
+        this.productsService.getProducts()
+            .then((response) => this.products = response);
 
         if (this.boughtProducts.length === 0) {
             this.showBoughtProducts = false;

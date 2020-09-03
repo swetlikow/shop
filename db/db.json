@@ -1,24 +1,25 @@
 {
-    "products": [{
-            "id": 1,
-            "name": "Milk",
-            "count": 2,
-            "price": 5,
-            "bought": false
-        },
-        {
-            "id": 2,
-            "name": "Potato",
-            "count": 3,
-            "price": 3,
-            "bought": false
-        },
-        {
-            "id": 3,
-            "name": "Banana",
-            "count": 1,
-            "price": 2,
-            "bought": false
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Milk",
+      "count": 2,
+      "price": 5,
+      "bought": false
+    },
+    {
+      "id": 2,
+      "name": "Potato",
+      "count": 3,
+      "price": 3,
+      "bought": false
+    },
+    {
+      "id": 3,
+      "name": "Banana",
+      "count": 1,
+      "price": 2,
+      "bought": false
+    }
+  ]
 }
