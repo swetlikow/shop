@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductsDatabaseService } from '../shared/services/products-database.service';
 import { Product } from './product/product';
 
@@ -9,7 +10,7 @@ export class ProductsService {
 
     constructor(private productsDatabaseService: ProductsDatabaseService) { }
 
-    getProductsFromDb(): Promise<Product[]> {
+    getProductsFromDb(): Observable<Product[]> {
         return this.productsDatabaseService.getProducts();
     }
 
@@ -18,7 +19,7 @@ export class ProductsService {
     }
 
     addProductToDb(product: Product): Promise<Product> {
-        return this.productsDatabaseService.getProducts()
+        return this.productsDatabaseService.getProducts().toPromise()
             .then((response) => {
                 const prod = response.find(x => x.id === product.id);
                 prod.count = ++prod.count;

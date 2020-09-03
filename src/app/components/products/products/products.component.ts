@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartListService } from '../../carts/cart-list.service';
 import { ProductsService } from '../../products/products.service';
 import { Product } from '../product/product';
@@ -10,7 +11,7 @@ import { Product } from '../product/product';
 })
 export class ProductsComponent implements OnInit {
 
-    products$: Promise<Product[]>;
+    products$: Observable<Product[]>;
     showBoughtProducts: boolean;
     boughtProducts: Product[] = [];
     boughtProductsQuantity: number;

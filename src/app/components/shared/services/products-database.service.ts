@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../../products/product/product';
 
 @Injectable({
@@ -11,10 +12,8 @@ export class ProductsDatabaseService {
 
     constructor(private http: HttpClient) { }
 
-    getProducts(): Promise<Product[]> {
-        return this.http.get<Product[]>(this.baseUrl).toPromise()
-            .then(response => response as Product[])
-            .catch(this.handleError);
+    getProducts(): Observable<Product[]> {
+        return this.http.get<Product[]>(this.baseUrl);
     }
 
     updateProduct(product: Product): Promise<Product> {
