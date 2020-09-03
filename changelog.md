@@ -40,4 +40,9 @@ Task 5:
 - add AuthService
 - add Login/Logout
 
+Task 6:
+- add db server
+- add ProductsDatabaseService (Promise)
+- change logic for get/add/remove product from hardcoded to db
+
 

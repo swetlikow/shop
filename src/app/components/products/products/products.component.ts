@@ -41,7 +41,9 @@ export class ProductsComponent implements OnInit {
         this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
         this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
 
-        this.productsService.addProductToDb(product);
+        this.productsService.addProductToDb(product)
+            .then(() => (this.products$ = this.productsService.getProductsFromDb()))
+            .catch(err => console.log(err));
 
         if (this.boughtProducts.length === 0) {
             this.showBoughtProducts = false;

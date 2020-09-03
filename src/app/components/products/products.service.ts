@@ -13,18 +13,18 @@ export class ProductsService {
         return this.productsDatabaseService.getProducts();
     }
 
-    removeProductFromDb(product: Product): void {
-        this.productsDatabaseService.updateProduct(product);
+    removeProductFromDb(product: Product): Promise<Product> {
+        return this.productsDatabaseService.updateProduct(product);
     }
 
-    addProductToDb(product: Product): void {
-        this.productsDatabaseService.getProducts()
+    addProductToDb(product: Product): Promise<Product> {
+        return this.productsDatabaseService.getProducts()
             .then((response) => {
                 const prod = response.find(x => x.id === product.id);
-                prod.count = prod.count + 1;
+                prod.count = ++prod.count;
                 prod.bought = false;
-                this.productsDatabaseService.updateProduct(prod);
-            })
-            .catch(err => console.log(err));
+
+                return this.productsDatabaseService.updateProduct(prod);
+            });
     }
 }
