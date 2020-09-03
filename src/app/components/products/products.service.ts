@@ -9,31 +9,20 @@ export class ProductsService {
 
     constructor(private productsDatabaseService: ProductsDatabaseService) { }
 
-    getProducts(): Promise<Product[]> {
+    getProductsFromDb(): Promise<Product[]> {
         return this.productsDatabaseService.getProducts();
     }
 
-    removeProduct(product: Product): void {
+    removeProductFromDb(product: Product): void {
+        this.productsDatabaseService.updateProduct(product);
+    }
+
+    addProductToDb(product: Product): void {
         this.productsDatabaseService.getProducts()
             .then((response) => {
                 const prod = response.find(x => x.id === product.id);
                 prod.count = prod.count + 1;
                 prod.bought = false;
-
-                this.productsDatabaseService.updateProduct(prod);
-            })
-            .catch(err => console.log(err));
-    }
-
-    addProduct(product: Product): void {
-        this.productsDatabaseService.getProducts()
-            .then((response) => {
-                const prod = response.find(x => x.id === product.id);
-                prod.count = prod.count - 1;
-                if (prod.count === 0) {
-                    prod.bought = true;
-                }
-
                 this.productsDatabaseService.updateProduct(prod);
             })
             .catch(err => console.log(err));

@@ -16,5 +16,4 @@ export class CartComponent {
     onRemoveProduct(): void {
         this.removeProduct.emit(this.product);
     }
-
 }

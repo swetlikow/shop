@@ -10,9 +10,9 @@ import { Product } from '../product/product';
 })
 export class ProductsComponent implements OnInit {
 
+    products$: Promise<Product[]>;
     showBoughtProducts: boolean;
     boughtProducts: Product[] = [];
-    products: Product[];
     boughtProductsQuantity: number;
     boughtProductsSum: number;
     order: boolean;
@@ -22,8 +22,7 @@ export class ProductsComponent implements OnInit {
         private productsService: ProductsService) { }
 
     ngOnInit(): void {
-        this.productsService.getProducts()
-            .then((response) => this.products = response);
+        this.products$ = this.productsService.getProductsFromDb();
     }
 
     onBuyProduct(product: Product): void {
@@ -33,9 +32,7 @@ export class ProductsComponent implements OnInit {
         this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
         this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
 
-        this.productsService.addProduct(product);
-        this.productsService.getProducts()
-            .then((response) => this.products = response);
+        this.productsService.removeProductFromDb(product);
     }
 
     onRemoveProduct(product: Product): void {
@@ -44,9 +41,7 @@ export class ProductsComponent implements OnInit {
         this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
         this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
 
-        this.productsService.removeProduct(product);
-        this.productsService.getProducts()
-            .then((response) => this.products = response);
+        this.productsService.addProductToDb(product);
 
         if (this.boughtProducts.length === 0) {
             this.showBoughtProducts = false;
@@ -56,5 +51,4 @@ export class ProductsComponent implements OnInit {
     onToggleProductsOrder(value: boolean): void {
         this.order = value;
     }
-
 }
