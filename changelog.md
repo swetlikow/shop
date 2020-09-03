@@ -44,5 +44,6 @@ Task 6:
 - add db server
 - add ProductsDatabaseService (Promise)
 - change logic for get/add/remove product from hardcoded to db
+- add TimingInterceptor
 
 
