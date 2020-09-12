@@ -10,16 +10,16 @@
     {
       "id": 2,
       "name": "Potato",
-      "count": 3,
+      "count": 2,
       "price": 3,
       "bought": false
     },
     {
       "id": 3,
       "name": "Banana",
-      "count": 1,
+      "count": 0,
       "price": 2,
-      "bought": false
+      "bought": true
     }
   ]
 }
