@@ -1,7 +1,7 @@
-import { IProduct } from '../../components/products/product/iproduct';
+import { Product } from 'src/app/components/products/product/product';
 
 export interface ProductsState {
-  data: ReadonlyArray<IProduct>;
+  data: Product[];
   readonly loaded: boolean;
   readonly error: Error | string;
 }

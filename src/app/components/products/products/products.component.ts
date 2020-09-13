@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartListService } from '../../carts/cart-list.service';
 import { ProductsService } from '../../products/products.service';
 import { Product } from '../product/product';
 import { AppState } from './../../../@ngrx';
+import {
+  selectProductsData,
+  selectProductsError,
+} from './../../../@ngrx/products/';
+import * as ProductsActions from './../../../@ngrx/products/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +23,7 @@ export class ProductsComponent implements OnInit {
   boughtProductsQuantity: number;
   boughtProductsSum: number;
   order: boolean;
+  productsError$: Observable<Error | string>;
 
   constructor(
     private cartListService: CartListService,
@@ -26,8 +32,12 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.products$ = this.productsService.getProductsFromDb();
     console.log('We have a store! ', this.store);
+
+    // this.products$ = this.productsService.getProductsFromDb();
+    this.products$ = this.store.pipe(select(selectProductsData));
+    this.productsError$ = this.store.pipe(select(selectProductsError));
+    this.store.dispatch(ProductsActions.getProducts());
   }
 
   onBuyProduct(product: Product): void {

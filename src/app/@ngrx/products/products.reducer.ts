@@ -8,6 +8,23 @@ const reducer = createReducer(
     console.log('GET_PRODUCTS action being handled!');
     return { ...state };
   }),
+  on(ProductsActions.getProductsSuccess, (state, { products }) => {
+    console.log('GET_PRODUCTS_SUCCESS action being handled!');
+    const data = [...products];
+    return {
+      ...state,
+      data,
+      loaded: true,
+    };
+  }),
+  on(ProductsActions.getProductsError, (state, { error }) => {
+    console.log('GET_PRODUCTS_ERROR action being handled!');
+    return {
+      ...state,
+      loaded: false,
+      error,
+    };
+  }),
   on(ProductsActions.getProduct, (state) => {
     console.log('GET_PRODUCT action being handled!');
     return { ...state };
