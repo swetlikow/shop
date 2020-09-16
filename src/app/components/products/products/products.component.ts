@@ -46,8 +46,9 @@ export class ProductsComponent implements OnInit {
     this.boughtProducts = this.cartListService.getBoughtProduct();
     this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
     this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
-
-    this.productsService.removeProductFromDb(product);
+    this.store.dispatch(
+      ProductsActions.buyProduct({ product: { ...product } })
+    );
   }
 
   onRemoveProduct(product: Product): void {

@@ -1,6 +1,4 @@
-import { IProduct } from './iproduct';
-
-export class Product implements IProduct {
+export class Product {
   constructor(
     public id: number = null,
     public name: string,

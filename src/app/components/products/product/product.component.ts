@@ -15,7 +15,7 @@ export class ProductComponent {
 
   onBuyProduct(): void {
     if (!this.product.bought) {
-      this.buyProduct.emit(this.product);
+      this.buyProduct.emit({ ...this.product });
     }
   }
 

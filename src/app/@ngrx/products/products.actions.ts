@@ -10,16 +10,6 @@ export const getProduct = createAction(
   props<{ productID: number }>()
 );
 
-export const buyProduct = createAction(
-  '[Product List Page (App)] BUY_PRODUCT',
-  props<{ product: Product }>()
-);
-
-export const deleteProduct = createAction(
-  '[Cart List Page (App)] DELETE_PRODUCT',
-  props<{ product: Product }>()
-);
-
 export const getProductsSuccess = createAction(
   '[Get Products Effect] GET_PRODUCTS_SUCCESS',
   props<{ products: Product[] }>()
@@ -28,4 +18,24 @@ export const getProductsSuccess = createAction(
 export const getProductsError = createAction(
   '[Get Products Effect] GET_PRODUCTS_ERROR',
   props<{ error: Error | string }>()
+);
+
+export const buyProduct = createAction(
+  '[Product List Page (App)] BUY_PRODUCT',
+  props<{ product: Product }>()
+);
+
+export const buyProductSuccess = createAction(
+  '[Buy Product Effect] BUY_PRODUCT_SUCCESS',
+  props<{ product: Product }>()
+);
+
+export const buyProductError = createAction(
+  '[Buy Product Effect] BUY_PRODUCT_ERROR',
+  props<{ error: Error | string }>()
+);
+
+export const deleteProduct = createAction(
+  '[Cart List Page (App)] DELETE_PRODUCT',
+  props<{ product: Product }>()
 );

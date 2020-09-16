@@ -13,8 +13,6 @@ export class ProductListComponent {
   constructor() {}
 
   onBuyProduct(product: Product): void {
-    console.log(product);
-
     product.count = product.count - 1;
     if (product.count === 0) {
       product.bought = true;
