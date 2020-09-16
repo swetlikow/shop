@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartListService } from '../../carts/cart-list.service';
-import { ProductsService } from '../../products/products.service';
 import { Product } from '../product/product';
 import { AppState } from './../../../@ngrx';
 import {
@@ -27,14 +26,10 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private cartListService: CartListService,
-    private productsService: ProductsService,
     private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
-    console.log('We have a store! ', this.store);
-
-    // this.products$ = this.productsService.getProductsFromDb();
     this.products$ = this.store.pipe(select(selectProductsData));
     this.productsError$ = this.store.pipe(select(selectProductsError));
     this.store.dispatch(ProductsActions.getProducts());
@@ -56,11 +51,9 @@ export class ProductsComponent implements OnInit {
     this.boughtProducts = this.cartListService.getBoughtProduct();
     this.boughtProductsQuantity = this.cartListService.getBoughtProductsQuantity();
     this.boughtProductsSum = this.cartListService.getBoughtProductsSum();
-
-    this.productsService
-      .addProductToDb(product)
-      .then(() => (this.products$ = this.productsService.getProductsFromDb()))
-      .catch((err) => console.log(err));
+    this.store.dispatch(
+      ProductsActions.deleteProduct({ product: { ...product } })
+    );
 
     if (this.boughtProducts.length === 0) {
       this.showBoughtProducts = false;

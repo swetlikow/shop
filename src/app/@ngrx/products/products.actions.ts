@@ -39,3 +39,13 @@ export const deleteProduct = createAction(
   '[Cart List Page (App)] DELETE_PRODUCT',
   props<{ product: Product }>()
 );
+
+export const deleteProductSuccess = createAction(
+  '[Delete Product Effect] DELETE_PRODUCT_SUCCESS',
+  props<{ product: Product }>()
+);
+
+export const deleteProductError = createAction(
+  '[Delete Product Effect] DELETE_PRODUCT_ERROR',
+  props<{ error: Error | string }>()
+);

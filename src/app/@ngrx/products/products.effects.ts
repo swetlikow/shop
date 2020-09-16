@@ -39,6 +39,23 @@ export class ProductsEffects implements OnInitEffects {
     )
   );
 
+  deleteProduct$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductsActions.deleteProduct),
+      pluck('product'),
+      concatMap((product: Product) =>
+        this.productsService
+          .addProductToDb(product)
+          .then((removedProduct: Product) => {
+            return ProductsActions.deleteProductSuccess({
+              product: removedProduct,
+            });
+          })
+          .catch((error) => ProductsActions.deleteProductError({ error }))
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private productsService: ProductsService

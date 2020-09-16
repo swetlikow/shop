@@ -56,6 +56,26 @@ const reducer = createReducer(
   on(ProductsActions.deleteProduct, (state) => {
     console.log('DELETE_PRODUCT action being handled!');
     return { ...state };
+  }),
+  on(ProductsActions.deleteProductSuccess, (state, { product }) => {
+    console.log('DELETE_PRODUCT_SUCCESS action being handled!');
+    const data = [...state.data];
+
+    const index = data.findIndex((t) => t.id === product.id);
+
+    data[index] = { ...product };
+
+    return {
+      ...state,
+      data,
+    };
+  }),
+  on(ProductsActions.deleteProductError, (state, { error }) => {
+    console.log('DELETE_PRODUCT_ERROR action being handled!');
+    return {
+      ...state,
+      error,
+    };
   })
 );
 
