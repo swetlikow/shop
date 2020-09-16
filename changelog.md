@@ -1,4 +1,5 @@
 Task 1:
+
 - add FirstComponent
 - add properties to FirstComponent.
 - add ProductComponent
@@ -8,6 +9,7 @@ Task 1:
 - implement ngFor, ngIf
 
 Task 2:
+
 - divide to modules
 - add product <-> product-list communication (@Input(), @Output())
 - add cart <-> cart-list communication (@Input(), @Output())
@@ -16,6 +18,7 @@ Task 2:
 - add HighlightDirective directive
 
 Task 3:
+
 - add sum and quantity
 - add LocalStorageService
 - add ConfigOptionsService
@@ -25,12 +28,14 @@ Task 3:
 - add appDivFontSize directive
 
 Task 4:
+
 - add built-in Pipe
 - change getProducts to Promise
 - add OrderByPipe for basket
 - use OrderByPipe
 
 Task 5:
+
 - add routing rotes
 - add HomeComponent
 - add NavBar with links to Home, About and Products routes
@@ -41,9 +46,15 @@ Task 5:
 - add Login/Logout
 
 Task 6:
+
 - add db server
 - add ProductsDatabaseService (Promise)
 - change logic for get/add/remove product from hardcoded to db
 - add TimingInterceptor
 
+Task 7:
 
+- add ngrx module and appState
+- add ngrx product state/actions/reducer
+- add ngrx product selectors/effects
+- implement in product component work with ngrx store
