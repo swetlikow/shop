@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from 'src/app/components/products/product/product';
+import { IProduct } from 'src/app/components/products/product/iproduct';
 
 export const getProducts = createAction(
   '[Product List Page (App)] GET_PRODUCTS'
@@ -12,7 +12,7 @@ export const getProduct = createAction(
 
 export const getProductsSuccess = createAction(
   '[Get Products Effect] GET_PRODUCTS_SUCCESS',
-  props<{ products: Product[] }>()
+  props<{ products: ReadonlyArray<IProduct> }>()
 );
 
 export const getProductsError = createAction(
@@ -22,12 +22,12 @@ export const getProductsError = createAction(
 
 export const buyProduct = createAction(
   '[Product List Page (App)] BUY_PRODUCT',
-  props<{ product: Product }>()
+  props<{ product: IProduct }>()
 );
 
 export const buyProductSuccess = createAction(
   '[Buy Product Effect] BUY_PRODUCT_SUCCESS',
-  props<{ product: Product }>()
+  props<{ product: IProduct }>()
 );
 
 export const buyProductError = createAction(
@@ -37,12 +37,12 @@ export const buyProductError = createAction(
 
 export const deleteProduct = createAction(
   '[Cart List Page (App)] DELETE_PRODUCT',
-  props<{ product: Product }>()
+  props<{ product: IProduct }>()
 );
 
 export const deleteProductSuccess = createAction(
   '[Delete Product Effect] DELETE_PRODUCT_SUCCESS',
-  props<{ product: Product }>()
+  props<{ product: IProduct }>()
 );
 
 export const deleteProductError = createAction(

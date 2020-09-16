@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { concatMap, pluck, switchMap } from 'rxjs/operators';
-import { Product } from 'src/app/components/products/product/product';
+import { IProduct } from 'src/app/components/products/product/iproduct';
 import { ProductsService } from 'src/app/components/products/products.service';
 import * as ProductsActions from './products.actions';
 
@@ -26,10 +26,10 @@ export class ProductsEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(ProductsActions.buyProduct),
       pluck('product'),
-      concatMap((product: Product) =>
+      concatMap((product: IProduct) =>
         this.productsService
           .removeProductFromDb(product)
-          .then((updatedProduct: Product) => {
+          .then((updatedProduct: IProduct) => {
             return ProductsActions.buyProductSuccess({
               product: updatedProduct,
             });
@@ -43,10 +43,10 @@ export class ProductsEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(ProductsActions.deleteProduct),
       pluck('product'),
-      concatMap((product: Product) =>
+      concatMap((product: IProduct) =>
         this.productsService
           .addProductToDb(product)
-          .then((removedProduct: Product) => {
+          .then((removedProduct: IProduct) => {
             return ProductsActions.deleteProductSuccess({
               product: removedProduct,
             });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartListService } from '../../carts/cart-list.service';
+import { IProduct } from '../product/iproduct';
 import { Product } from '../product/product';
 import { AppState } from './../../../@ngrx';
 import {
@@ -16,7 +17,7 @@ import * as ProductsActions from './../../../@ngrx/products/products.actions';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  products$: Observable<Product[]>;
+  products$: Observable<ReadonlyArray<IProduct>>;
   showBoughtProducts: boolean;
   boughtProducts: Product[] = [];
   boughtProductsQuantity: number;
