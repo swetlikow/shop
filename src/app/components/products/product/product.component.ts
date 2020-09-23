@@ -11,7 +11,9 @@ export class ProductComponent {
   @Input() product: Product;
   @Output() buyProduct: EventEmitter<Product> = new EventEmitter();
 
-  constructor(private router: Router) {}
+  // может быть не стоит в презентационный компонент внедрять роутер
+  // лучше генерировать аутпут
+  constructor(private router: Router) { }
 
   onBuyProduct(): void {
     if (!this.product.bought) {
