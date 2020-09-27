@@ -39,10 +39,13 @@ export class ProcessOrderComponent implements OnInit {
       }),
       lastName: new FormControl(''),
       email: new FormControl(this.user.email, {
-        validators: [Validators.required, Validators.minLength(3)],
+        validators: [
+          Validators.required,
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'),
+        ],
       }),
-      country: new FormControl(''),
       isAddress: new FormControl(false),
+      country: new FormControl(''),
       city: new FormControl(''),
       street: new FormControl(''),
       zip: new FormControl(''),
@@ -52,6 +55,5 @@ export class ProcessOrderComponent implements OnInit {
   onSave(): void {
     this.products = this.cartListService.getBoughtProduct();
     this.sentOrder = true;
-    console.log(JSON.stringify(this.userForm.value));
   }
 }
