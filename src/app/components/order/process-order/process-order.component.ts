@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { CartListService } from '../../carts/cart-list.service';
+import { Product } from '../../products/product/product';
 import { User } from '../../shared/models/user';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
 
@@ -16,10 +18,13 @@ import { LocalStorageService } from '../../shared/services/local-storage.service
 export class ProcessOrderComponent implements OnInit {
   userForm: FormGroup;
   user: User;
+  sentOrder = false;
+  products: Product[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private cartListService: CartListService
   ) {}
 
   ngOnInit(): void {
@@ -32,28 +37,21 @@ export class ProcessOrderComponent implements OnInit {
       firstName: new FormControl('', {
         validators: [Validators.required, Validators.minLength(3)],
       }),
-      lastName: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
+      lastName: new FormControl(''),
       email: new FormControl(this.user.email, {
         validators: [Validators.required, Validators.minLength(3)],
       }),
-      country: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
-      city: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
-      street: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
-      zip: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
+      country: new FormControl(''),
+      isAddress: new FormControl(false),
+      city: new FormControl(''),
+      street: new FormControl(''),
+      zip: new FormControl(''),
     });
   }
 
   onSave(): void {
+    this.products = this.cartListService.getBoughtProduct();
+    this.sentOrder = true;
     console.log(JSON.stringify(this.userForm.value));
   }
 }

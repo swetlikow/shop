@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">Process Order</div>
 
-  <div class="panel-body">
+  <div *ngIf="!sentOrder" class="panel-body">
     <form class="form-horizontal" (ngSubmit)="onSave()" [formGroup]="userForm">
       <fieldset>
         <div class="form-group">
@@ -49,7 +49,7 @@
               class="form-control"
               id="lastNameId"
               type="text"
-              placeholder="Last Name (required)"
+              placeholder="Last Name"
               formControlName="lastName"
               [ngClass]="{
                 'has-error':
@@ -66,9 +66,6 @@
                 userForm.get('lastName').errors
               "
             >
-              <span *ngIf="userForm.get('lastName').hasError('required')">
-                Please enter your last name.
-              </span>
             </span>
           </div>
         </div>
@@ -105,123 +102,95 @@
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label" for="countryId">Country</label>
-          <div class="col-sm-10">
-            <input
-              class="form-control"
-              id="countryId"
-              type="text"
-              placeholder="Country (required)"
-              formControlName="country"
-              [ngClass]="{
-                'has-error':
-                  (userForm.get('country').touched ||
-                    userForm.get('country').dirty) &&
-                  !userForm.get('country').valid
-              }"
-            />
-            <span
-              class="help-block"
-              *ngIf="
-                (userForm.get('country').touched ||
-                  userForm.get('country').dirty) &&
-                userForm.get('country').errors
-              "
-            >
-              <span *ngIf="userForm.get('country').hasError('required')">
-                Please enter your country.
-              </span>
-            </span>
+          <div class="col-sm-offset-2 col-sm-12 checkbox">
+            <label>
+              <input
+                id="isAddressId"
+                type="checkbox"
+                formControlName="isAddress"
+              />
+              Add the address
+            </label>
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="cityId">City</label>
-          <div class="col-sm-10">
-            <input
-              class="form-control"
-              id="cityId"
-              type="text"
-              placeholder="City (required)"
-              formControlName="city"
-              [ngClass]="{
-                'has-error':
-                  (userForm.get('city').touched ||
-                    userForm.get('city').dirty) &&
-                  !userForm.get('city').valid
-              }"
-            />
-            <span
-              class="help-block"
-              *ngIf="
-                (userForm.get('city').touched || userForm.get('city').dirty) &&
-                userForm.get('city').errors
-              "
+        <div *ngIf="userForm.get('isAddress').value">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="countryId"
+              >Country</label
             >
-              <span *ngIf="userForm.get('city').hasError('required')">
-                Please enter your city.
-              </span>
-            </span>
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="countryId"
+                type="text"
+                placeholder="Country"
+                formControlName="country"
+                [ngClass]="{
+                  'has-error':
+                    (userForm.get('country').touched ||
+                      userForm.get('country').dirty) &&
+                    !userForm.get('country').valid
+                }"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="streetId">Street</label>
-          <div class="col-sm-10">
-            <input
-              class="form-control"
-              id="streetId"
-              type="text"
-              placeholder="Street (required)"
-              formControlName="street"
-              [ngClass]="{
-                'has-error':
-                  (userForm.get('street').touched ||
-                    userForm.get('street').dirty) &&
-                  !userForm.get('street').valid
-              }"
-            />
-            <span
-              class="help-block"
-              *ngIf="
-                (userForm.get('street').touched ||
-                  userForm.get('street').dirty) &&
-                userForm.get('street').errors
-              "
-            >
-              <span *ngIf="userForm.get('street').hasError('required')">
-                Please enter your street.
-              </span>
-            </span>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="cityId">City</label>
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="cityId"
+                type="text"
+                placeholder="City"
+                formControlName="city"
+                [ngClass]="{
+                  'has-error':
+                    (userForm.get('city').touched ||
+                      userForm.get('city').dirty) &&
+                    !userForm.get('city').valid
+                }"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="zipId">Zip</label>
-          <div class="col-sm-10">
-            <input
-              class="form-control"
-              id="zipId"
-              type="text"
-              placeholder="Zip (required)"
-              formControlName="zip"
-              [ngClass]="{
-                'has-error':
-                  (userForm.get('zip').touched || userForm.get('zip').dirty) &&
-                  !userForm.get('zip').valid
-              }"
-            />
-            <span
-              class="help-block"
-              *ngIf="
-                (userForm.get('zip').touched || userForm.get('zip').dirty) &&
-                userForm.get('zip').errors
-              "
-            >
-              <span *ngIf="userForm.get('zip').hasError('required')">
-                Please enter your zip.
-              </span>
-            </span>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="streetId">Street</label>
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="streetId"
+                type="text"
+                placeholder="Street"
+                formControlName="street"
+                [ngClass]="{
+                  'has-error':
+                    (userForm.get('street').touched ||
+                      userForm.get('street').dirty) &&
+                    !userForm.get('street').valid
+                }"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="zipId">Zip</label>
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="zipId"
+                type="text"
+                placeholder="Zip"
+                formControlName="zip"
+                [ngClass]="{
+                  'has-error':
+                    (userForm.get('zip').touched ||
+                      userForm.get('zip').dirty) &&
+                    !userForm.get('zip').valid
+                }"
+              />
+            </div>
           </div>
         </div>
 
@@ -240,5 +209,22 @@
         </div>
       </fieldset>
     </form>
+  </div>
+
+  <div *ngIf="sentOrder" class="panel-body">
+    <h3 class="text-center">
+      Products were successfully sent to {{ userForm.get("firstName").value }}
+      {{ userForm.get("lastName").value }}!
+    </h3>
+    <div class="col-sm-12 text-center" *ngFor="let product of products">
+      <li class="list-group-item" style="padding: 4px 15px">
+        <b
+          >{{ product.count }} {{ product.name }} ({{
+            product.price * product.count
+          }}
+          usd)</b
+        >
+      </li>
+    </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Milk",
-      "count": 10,
+      "count": 11,
       "price": 5,
       "bought": false
     },
@@ -17,7 +17,7 @@
     {
       "id": 3,
       "name": "Banana",
-      "count": 2,
+      "count": 6,
       "price": 2,
       "bought": false
     }
