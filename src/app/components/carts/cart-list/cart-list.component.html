@@ -1,12 +1,26 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Basket (Total Quantity: {{boughtProductsQuantity}} Total sum: {{boughtProductsSum}})
-        <div class="btn btn-default btn-xs" style="float: right;" (click)="onToggleProductsOrder()">Toggle
-            Order By Count</div>
+  <div class="panel-heading">
+    Basket (Total Quantity: {{ boughtProductsQuantity }} Total sum:
+    {{ boughtProductsSum }})
+    <div class="btn btn-success btn-xs" style="float: left" (click)="onOrder()">
+      Order
     </div>
-    <div class="panel-body">
-        <ul class="list-group">
-            <app-cart *ngFor="let product of boughtProducts" [product]="product"
-                (removeProduct)="onRemoveProduct($event)" appHighlight></app-cart>
-        </ul>
+    <div
+      class="btn btn-default btn-xs"
+      style="float: right"
+      (click)="onToggleProductsOrder()"
+    >
+      Toggle Order By Count
     </div>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <app-cart
+        *ngFor="let product of boughtProducts"
+        [product]="product"
+        (removeProduct)="onRemoveProduct($event)"
+        appHighlight
+      ></app-cart>
+    </ul>
+  </div>
 </div>
