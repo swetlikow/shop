@@ -39,12 +39,21 @@ export class ProcessOrderComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(3)],
       }),
       lastName: new FormControl('', {
-        validators: [CustomValidators.lastName],
+        validators: [
+          CustomValidators.lastNameLength,
+          CustomValidators.lastNameLetters,
+        ],
       }),
       email: new FormControl(this.user.email, {
         validators: [
           Validators.required,
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'),
+        ],
+      }),
+      phone: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.pattern('^((\\+91-?)|0)?[0-9]{9}$'),
         ],
       }),
       isAddress: new FormControl(false),
