@@ -10,7 +10,7 @@ export class CustomValidators {
 
   static lastNameLetters(control: AbstractControl): ValidationErrors | null {
     if (control.value.match(/\d+/g) !== null) {
-      return { error: "Last name can't contain numbers" };
+      return { error: 'Last name can not contain numbers' };
     }
     return null;
   }

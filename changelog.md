@@ -58,3 +58,11 @@ Task 7:
 - add ngrx product state/actions/reducer
 - add ngrx product selectors/effects
 - implement in product component work with ngrx store
+
+Task 8:
+
+- add ProcessOrderComponent form
+- implement form builder
+- add logic to create/send products order
+- add custom validators for lastName
+- add email validator directive

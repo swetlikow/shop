@@ -82,6 +82,7 @@
               type="text"
               placeholder="Email (required)"
               formControlName="email"
+              appEmailValidator
               [ngClass]="{
                 'has-error':
                   (userForm.get('email').touched ||
@@ -97,11 +98,8 @@
                 userForm.get('email').errors
               "
             >
-              <span *ngIf="userForm.get('email').hasError('required')">
-                Please enter your email.
-              </span>
-              <span *ngIf="userForm.get('email').hasError('pattern')">
-                Please enter valid email.
+              <span *ngIf="userForm.get('email').hasError('error')">
+                {{ userForm.get("email").errors.error }}
               </span>
             </span>
           </div>

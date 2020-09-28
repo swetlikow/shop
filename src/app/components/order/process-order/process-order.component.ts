@@ -44,12 +44,7 @@ export class ProcessOrderComponent implements OnInit {
           CustomValidators.lastNameLetters,
         ],
       }),
-      email: new FormControl(this.user.email, {
-        validators: [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'),
-        ],
-      }),
+      email: new FormControl(this.user.email),
       phone: new FormControl('', {
         validators: [
           Validators.required,

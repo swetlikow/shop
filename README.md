@@ -11,3 +11,5 @@ TASK 5 (Routing) DONE
 TASK 6 (HttpClient) DONE
 
 TASK 6 (NgRx) DONE
+
+TASK 7 (Reactive Forms) DONE
