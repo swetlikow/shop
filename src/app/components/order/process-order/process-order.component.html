@@ -66,6 +66,9 @@
                 userForm.get('lastName').errors
               "
             >
+              <span *ngIf="userForm.get('lastName').hasError('error')">
+                {{ userForm.get("lastName").errors.error }}
+              </span>
             </span>
           </div>
         </div>
@@ -96,6 +99,9 @@
             >
               <span *ngIf="userForm.get('email').hasError('required')">
                 Please enter your email.
+              </span>
+              <span *ngIf="userForm.get('email').hasError('pattern')">
+                Please enter valid email.
               </span>
             </span>
           </div>

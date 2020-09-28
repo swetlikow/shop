@@ -9,6 +9,7 @@ import { CartListService } from '../../carts/cart-list.service';
 import { Product } from '../../products/product/product';
 import { User } from '../../shared/models/user';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { CustomValidators } from './../../shared/validators/custom.validators';
 
 @Component({
   selector: 'app-process-order',
@@ -37,7 +38,9 @@ export class ProcessOrderComponent implements OnInit {
       firstName: new FormControl('', {
         validators: [Validators.required, Validators.minLength(3)],
       }),
-      lastName: new FormControl(''),
+      lastName: new FormControl('', {
+        validators: [CustomValidators.lastName],
+      }),
       email: new FormControl(this.user.email, {
         validators: [
           Validators.required,
