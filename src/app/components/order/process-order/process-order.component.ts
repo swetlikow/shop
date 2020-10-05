@@ -3,7 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { CartListService } from '../../carts/cart-list.service';
 import { Product } from '../../products/product/product';
@@ -26,7 +26,7 @@ export class ProcessOrderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private localStorageService: LocalStorageService,
     private cartListService: CartListService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.user = this.localStorageService.getCurrentUser();
@@ -45,6 +45,8 @@ export class ProcessOrderComponent implements OnInit {
         ],
       }),
       email: new FormControl(this.user.email),
+      // по требованиях это поле должно быть массивом, чтобы содержать несколько телефонов
+      // сообщения о нарушених правилах должны формироваться в классе.
       phone: new FormControl('', {
         validators: [
           Validators.required,
