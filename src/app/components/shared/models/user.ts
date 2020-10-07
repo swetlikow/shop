@@ -1,4 +1,5 @@
 export class User {
+  // поля по умолчанию публичные, можно не писать модификатор
   public firstName: string;
   public lastName: string;
   public country: string;
@@ -6,5 +7,5 @@ export class User {
   public street: string;
   public zip: string;
 
-  constructor(public id: number, public login: string, public email: string) {}
+  constructor(public id: number, public login: string, public email: string) { }
 }
