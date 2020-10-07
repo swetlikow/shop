@@ -1,11 +1,10 @@
 export class User {
-  // поля по умолчанию публичные, можно не писать модификатор
-  public firstName: string;
-  public lastName: string;
-  public country: string;
-  public city: string;
-  public street: string;
-  public zip: string;
+  firstName: string;
+  lastName: string;
+  country: string;
+  city: string;
+  street: string;
+  zip: string;
 
-  constructor(public id: number, public login: string, public email: string) { }
+  constructor(public id: number, public login: string, public email: string) {}
 }
