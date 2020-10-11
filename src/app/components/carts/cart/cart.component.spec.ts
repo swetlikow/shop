@@ -10,7 +10,6 @@ describe('CartComponent', () => {
   let debugElement: DebugElement;
   let htmlElement: HTMLElement;
   const product: Product = new Product(1, 'TestName', 5, 10, false);
-  const listItemContent = `Product: ${product.name} Count: ${product.count}`;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,6 +33,7 @@ describe('CartComponent', () => {
   });
 
   it('should create list-item content with product.name and product.count', () => {
-    expect(htmlElement.innerText).toBe(listItemContent);
+    const listItemContent = `Product: ${product.name} Count: ${product.count}`;
+    expect(htmlElement.innerText).toEqual(listItemContent);
   });
 });
