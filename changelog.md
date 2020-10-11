@@ -66,3 +66,13 @@ Task 8:
 - add logic to create/send products order
 - add custom validators for lastName
 - add email validator directive
+
+Task 9:
+
+- add AppComponent isolated test
+- add LocalStorageService isolated test
+- add GeneratorService isolated test
+- add OrderProductsPipe isolated test
+- add CartComponent integration test
+- add AboutComponent integration test
+- generate test code coverage (ng test --code-coverage)
