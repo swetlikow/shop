@@ -3,7 +3,7 @@ import { LocalStorageService } from './local-storage.service';
 
 describe('LocalStorageService', () => {
   let service: LocalStorageService;
-  let user: User = new User(1, 'svietlikov', 'andrii_svietlikov@epam.com');
+  const user: User = new User(1, 'svietlikov', 'andrii_svietlikov@epam.com');
 
   beforeEach(() => {
     service = new LocalStorageService();

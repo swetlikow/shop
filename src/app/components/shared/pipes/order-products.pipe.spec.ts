@@ -3,7 +3,7 @@ import { OrderProductsPipe } from './order-products.pipe';
 
 describe('OrderProductsPipe', () => {
   const pipe = new OrderProductsPipe();
-  let products: Product[] = [
+  const products: Product[] = [
     new Product(1, 'First', 1, 10),
     new Product(2, 'Second', 2, 20),
     new Product(3, 'Third', 3, 30),

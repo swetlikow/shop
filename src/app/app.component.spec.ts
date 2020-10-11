@@ -27,5 +27,5 @@ describe('AppComponent', () => {
 
 @Injectable()
 export class RouterStub {
-  navigate(commands: any[], extras?: NavigationExtras) {}
+  navigate(commands: any[], extras?: NavigationExtras): void {}
 }
