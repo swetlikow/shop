@@ -12,12 +12,14 @@ import {
 } from '../shared/services/generator.factory';
 import { GeneratorService } from '../shared/services/generator.service';
 import { LocalStorageService } from '../shared/services/local-storage.service';
+import { DivFontSizeDirective } from './../shared/directives/div-font-size.directive';
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
   let debugElements: DebugElement[];
+  let directiveDebugElement: DebugElement;
   const generateTokenLength = 5;
   const currentUserEmail = 'andrii_svietlikov@epam.com';
   const shopVersionTemplate =
@@ -25,7 +27,7 @@ describe('AboutComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutComponent],
+      declarations: [AboutComponent, DivFontSizeDirective],
       providers: [
         { provide: ConstantsService, useValue: constantsInstance },
         { provide: ConfigOptionsService, useClass: LocalStorageService },
@@ -43,6 +45,9 @@ describe('AboutComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     debugElements = fixture.debugElement.queryAll(By.css('.col-sm-6'));
+    directiveDebugElement = fixture.debugElement.query(
+      By.directive(DivFontSizeDirective)
+    );
   });
 
   it('should create', () => {
@@ -69,5 +74,12 @@ describe('AboutComponent', () => {
 
   it('should generate token', () => {
     expect(component.token.length).toEqual(generateTokenLength);
+  });
+
+  it('should set div text fontSize up using directive "appDivFontSize"', () => {
+    directiveDebugElement.triggerEventHandler('mouseenter', null);
+    fixture.detectChanges();
+    const fontSize = directiveDebugElement.nativeElement.style.fontSize;
+    expect(fontSize).toEqual('16px');
   });
 });
